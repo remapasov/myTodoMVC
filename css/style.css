@@ -1,0 +1,59 @@
+body {
+    text-align: center ;
+    font-size: 18px;
+    font-style: italic bold;
+    font-family: "Comic Sans";
+    color: #B0B0B0;
+}
+.main {
+    width: 520px;
+    height: 565px;
+    background: #3333CC;
+    border: 2px solid #9A7;
+    position: relative;
+    float:center;
+    color: #F0F0F0 ;
+    margin:50px auto;
+    text-align:center;
+}
+.input {
+    width: 490px;
+    height: 40px;
+    padding-left:0px;
+    position: relative;
+    float:center;
+    color: white;
+    background: #00CCFF;
+    font-size: 24px;
+    letter-spacing: 1px;
+    overflow: hidden;
+}
+.list {
+    position: relative;
+    float:center;
+    width: 480px;
+	height: 420px;
+    overflow-y: scroll;
+    background: linear-gradient(to top, #3333CC, #00CCFF);
+    list-style-type: none;
+}
+.activeNote {
+    color: yellow;
+    padding-left:5px;
+    letter-spacing: 1px;
+	text-align: left;  
+	border: 1px solid #9A7;
+}
+.complitedNote {
+    color: yellow;
+    padding-left:5px;
+    letter-spacing: 1px;
+	text-align: left;  
+	border: 1px solid #9A7;
+	text-decoration:line-through;
+}
+.remove {
+	font-size: 6px;
+    font-family: "MS Sans Serif";
+    float:right;
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
+
+	<body>
+	 <div class = 'main'>
+		<form id="data">
+			<input type='checkbox' id = 'checkAll' onchange='changeAllStatus()'> 
+			<input type='text' class='input' id='input' autofocus>
+			<a href="#but">X</a>
+			
+		</form>
+		
+		<ul id="list" class='list'>
+		</ul>
+		<input type="button" value="All" onclick='screenAll()'>
+		<input type="button" value="Active" onclick='screenActive()'>
+		<input type="button" value="Completed" onclick='screenCompleted()'>
+		<input type="button" value="Clear completed" onclick='clearCompleted()'>
+	</div>
+	
+		
+		<script src="lib/underscore.js"></script>
+		<script src="js/script.js"></script>
+		<script src="js/view.js"></script>
+	</body>
+</html>
