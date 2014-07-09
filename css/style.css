@@ -8,7 +8,7 @@ body {
 .main {
     width: 520px;
     height: 565px;
-    background: #3333CC;
+    background: linear-gradient(to top, #3333CC, #00CCFF);
     border: 2px solid #9A7;
     position: relative;
     float:center;
@@ -34,7 +34,7 @@ body {
     width: 480px;
 	height: 420px;
     overflow-y: scroll;
-    background: linear-gradient(to top, #3333CC, #00CCFF);
+    background: transparent;
     list-style-type: none;
 }
 .activeNote {

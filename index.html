@@ -2,6 +2,10 @@
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<script>var i = "2";
+			var bla = function(){alert(i)};
+		</script>
+		
 	</head>
 
 	<body>
@@ -21,8 +25,12 @@
 		<input type="button" value="Clear completed" onclick='clearCompleted()'>
 	</div>
 	
-		
+	<input type="button" value="Bla" onclick='bla()'>
+	<input type="checkbox" id=<%=i%>
+	
+		<script>document.getElementById("2").checked = "checked";</script>
 		<script src="lib/underscore.js"></script>
+		<script src="lib/jquery-2.1.1.min.js"></script>
 		<script src="js/script.js"></script>
 		<script src="js/view.js"></script>
 	</body>

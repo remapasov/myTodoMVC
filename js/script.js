@@ -1,4 +1,6 @@
 var form = document.getElementById('data');
+//var form = $("#data");
+//console.log("Form: " + form);
 var remove = document.getElementById('li');
 //var check = document.getElementById('ch');
 var input;
@@ -96,8 +98,12 @@ var list = "<% _.each(people, function(name) { %> <li><%= name %></li> <% }); %>
 
 // вернет "<li>moe</li><li>curly</li><li>larry</li>"
 var t = _.template(list, {people : ['moe', 'curly', 'larry']});
-console.log("List: " + t);
+console.log("List: " + list);
 
+//todoArray[0] = "rrr";
+
+var test = _.each(todoArray, function(num){ alert(num); });
+console.log("Test: " + test);
 
 var template = _.template("<b><%- value %></b>");
 // вернет "<b>&lt;script&gt;</b>"

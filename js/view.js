@@ -14,7 +14,7 @@ var screen = function(note, i) {
 	if (todoArray[i].activeStatus !== true) {
 		noteStyle = "complitedNote";
 	}
-		text = "<li class= '" + noteStyle + "'><input type='checkbox' id='ch' onchange='changeStatus(\"" + i + "\")' >"
+		text = "<li class= '" + noteStyle + "'><input type='checkbox' id='" + i + "' onchange='changeStatus(\"" + i + "\")' >"
 		text += note + 
 			"<input type='button' class='remove' value='Remove' onclick='del(\"" + i + "\")'>" +
 			"<a href=\"X\" onclick='del(\"" + i + "\")'>" + "</li>";
@@ -28,11 +28,23 @@ var screen = function(note, i) {
 var screenAll = function() {
 	document.getElementById("list").innerHTML = "";
 	for (var i = 0; i < todoArray.length; i++) {
+		if (todoArray[i].activeStatus !== true) {
+			document.getElementById(i).checked = "checked";
+		}
 		screen(todoArray[i].note, i);
 	}
-//	var list = "<% _.each(todoArray, function(name) { %> <li><%= name %></li> <% }); %>";
-//	var text = _.template(list, todoArray);
-//	document.getElementById("list").innerHTML = text;
+//	var noteStyle = "activeNote";
+//	if (todoArray[i].activeStatus !== true) {
+//		noteStyle = "complitedNote";
+//	}
+//	var list = "<% _.each(tasks, function(name) { %> <li class=<%noteStyle%>>" +
+//			"<input type='checkbox' id='ch' onchange='changeStatus(<%=name.note%>)'><%= name.note%>" +
+//			"<input type='button' class='remove' value='Remove' onclick='del(<%= name.note%>)'></li> <% }); %>";
+//	var text = _.template(list, {tasks : todoArray});
+//	_.each(todoArray, function(name) {document.getElementById("list").innerHTML += "<li>" + name.note + "</li>" });
+//	var list = "<% _.each(arr, function(name) { %> <li><%= name %></li> <% }); %>";
+//	var text = _.template(list, {arr: todoArray});
+//	 document.getElementById("list").innerHTML = text;
 
 }
 
