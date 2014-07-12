@@ -53,7 +53,8 @@ body {
 	text-decoration:line-through;
 }
 .remove {
-	font-size: 6px;
     font-family: "MS Sans Serif";
     float:right;
+    width: 70px;
+    height: 22px;
 }

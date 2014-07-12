@@ -10,7 +10,7 @@
 
 	<body>
 	 <div class = 'main'>
-		<form id="data">
+		<form id="data" name="form">
 			<input type='checkbox' id = 'checkAll' onchange='changeAllStatus()'> 
 			<input type='text' class='input' id='input' autofocus>
 			<a href="#but">X</a>
@@ -25,13 +25,15 @@
 		<input type="button" value="Clear completed" onclick='clearCompleted()'>
 	</div>
 	
-	<input type="button" value="Bla" onclick='bla()'>
-	<input type="checkbox" id=<%=i%>
+	<input type="button" id="but" data-id="blabla" value="Bla" onclick='bla()'>
+	<input type="checkbox" id="2">
+	<button class="remove">Ku</button>
 	
 		<script>document.getElementById("2").checked = "checked";</script>
 		<script src="lib/underscore.js"></script>
 		<script src="lib/jquery-2.1.1.min.js"></script>
 		<script src="js/script.js"></script>
 		<script src="js/view.js"></script>
+		
 	</body>
 </html>

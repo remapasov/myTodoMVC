@@ -1,7 +1,8 @@
-var form = document.getElementById('data');
-//var form = $("#data");
-//console.log("Form: " + form);
+//var form = document.getElementById('data');
+var form = $("#data");
+console.log("Form: ", form);
 var remove = document.getElementById('li');
+//var remove = $("#li");
 //var check = document.getElementById('ch');
 var input;
 var todoArray = [];
@@ -46,23 +47,28 @@ var clearCompleted = function() {
 
 //console.log("form: " + form);
 
-form.onsubmit = function() {
+form.on ('submit', function() {
 	todo = new todoClass(document.getElementById('input').value);
-	
-//	console.log("input: " + input)
-//	alert("todo: " + todo.note);
 	
 	if (todo.note !== ""){
 		todoArray.push(todo);
-	
 	}
-	
-//	console.log("arr: " + todoArray);
 	
 	screenAll();
 	document.getElementById("input").value = "";
 	return false;
-};
+});
+
+//var name = document.getElementById('but');
+//var att = name.getAttribute('data-id');
+//alert(att);
+
+//var remove = document.getElementById('remove');
+document.getElementById('but').onclick = function() {
+	var att = document.getElementById('but').getAttribute('value');
+	alert(att);
+	console.log("Attr: " + att);
+}
 
 
 //document.getElementById('che').addEventListener('change', function(event) {
