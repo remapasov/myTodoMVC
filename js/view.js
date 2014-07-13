@@ -6,22 +6,21 @@ var screen = function(note, i) {
 	}
 	
 	var list = document.getElementById('list')
+	var li = $('#li');
 	var li = document.createElement("li");
 	li.className = noteStyle;
 	li.id = i;
-	li.innerHTML = "<input type='checkbox' onchange='changeStatus(\"" + i + "\")' >" +
-		note + "<button class='remove'>Remove</button></li>";
+	li.innerHTML = "<input type='checkbox' id='ch" + i + "' onchange='changeStatus(\"" + i + "\")' >" +
+		note + "<a href='#' id='ref" + i + "' class='remove'>X</a></li>";
 	list.appendChild(li);
 	
-//	text = "<li id='" + i + "' class= '" + noteStyle + "'><input type='checkbox' onchange='changeStatus(\"" + i + "\")' >";
-//	text += note + 
-//		"<button class='remove'>Remove</button></li>";
-//	document.getElementById("list").innerHTML += text;
+	var ch = document.getElementById("ch" + i);
+	if(todoArray[i].activeStatus !== true) {
+		ch.checked = "checked";
+	}
 	
-	var doc = document.getElementById(i).getElementsByTagName("button")[0];
-	console.log("Button remove: " + doc);
-	console.log("i: " + i);
-	doc.onclick = function(index) {
+	var ref = document.getElementById("ref" + i);
+	ref.onclick = function(index) {
 		return function() {
 //			var index = i;
 //			alert(index);
@@ -29,6 +28,23 @@ var screen = function(note, i) {
 			screenAll();
 		}
 	}(i);
+	
+//	text = "<li id='" + i + "' class= '" + noteStyle + "'><input type='checkbox' onchange='changeStatus(\"" + i + "\")' >";
+//	text += note + 
+//		"<button class='remove'>Remove</button></li>";
+//	document.getElementById("list").innerHTML += text;
+	
+//	var doc = document.getElementById(i).getElementsByTagName("button")[0];
+//	console.log("Button remove: " + doc);
+//	console.log("i: " + i);
+//	doc.onclick = function(index) {
+//		return function() {
+////			var index = i;
+////			alert(index);
+//			todoArray.splice(index, 1);
+//			screenAll();
+//		}
+//	}(i);
 	
 //		document.getElementById(i).on("click", function(i) {
 //				todoArray.splice(i, 1);

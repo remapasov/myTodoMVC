@@ -26,8 +26,9 @@ var changeStatus = function(i) {
 }
 
 var changeAllStatus = function() {
+	var mainCheckboxStatus = document.getElementById("checkAll").checked;
 	for (var i = 0; i < todoArray.length; i++) {
-		todoArray[i].activeStatus = !todoArray[i].activeStatus;
+		todoArray[i].activeStatus = !mainCheckboxStatus;
 	}
 	screenAll();
 }
