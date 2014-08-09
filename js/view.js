@@ -1,3 +1,5 @@
+var status = "all";
+
 var screen = function(note, i) {
 	var noteStyle = "activeNote";
 	
@@ -17,8 +19,17 @@ var screen = function(note, i) {
 	var ref = document.getElementById("ref" + i);
 	ref.onclick = function(index) {
 		return function() {
-			todoArray.splice(index, 1);
-			screenAll();
+//			todoArray.splice(index, 1);
+			var data = {
+					"id": index
+				}
+			$.ajax({
+				  type: "DELETE",
+				  url: "/remove",
+				  data: data,
+				  async: false
+			});
+			screenNotes();
 		}
 	}(i);
 	
@@ -26,20 +37,32 @@ var screen = function(note, i) {
 	check.onclick = function(index) {
 		return function() {
 			todoArray[index].activeStatus = !todoArray[index].activeStatus;
-			screenAll();
+//			$.put('/changeStatus', {id: index});
+			
+//			console.log("ID: " + index);
+			var data = {
+				"id": index
+			}
+			$.ajax({
+				  type: "PUT",
+				  url: "/changeStatus",
+				  data: data,
+				  async: false
+			});
+			
+			screenNotes();
 		}
 	}(i);
 	
-	var ch = document.getElementById("ch" + i);
-	if(todoArray[i].activeStatus !== true) {
-		ch.checked = "checked";
-	}
-	
-//	ch = $('input', list);
-////	ch.get(i).checked = "checked";
+//	var ch = document.getElementById("ch" + i);
 //	if(todoArray[i].activeStatus !== true) {
-//		ch.get(i).checked = "checked";
+//		ch.checked = "checked";
 //	}
+	
+	var ch = $('input', list);
+	if(todoArray[i].activeStatus !== true) {
+		ch.get(i).checked = "checked";
+	}
 		
 //	console.log("Ch: " + ch.get(0));
 //	ch.get(i).addEventListener("change", function(){
@@ -69,32 +92,60 @@ var screen = function(note, i) {
 	
 }
 
-var screenAll = function() {
+// all operations in callback 
+var screenNotes = function() {
 	document.getElementById("list").innerHTML = "";
-	for (var i = 0; i < todoArray.length; i++) {
-//		if (todoArray[i].activeStatus !== true) {
-//			document.getElementById(i).checked = "checked";
+	$.get( "get", null, function(array) {
+//		todoArray = $.parseJSON(array).todo;
+//		console.log(jQuery.parseJSON(array).todo[0].note);
+//		todoArray = jQuery.parseJSON(array).todo;
+//		for (var i = 0; i < todoArray.length; i++) {
+//			console.log(todoArray[i].note);
 //		}
-		screen(todoArray[i].note, i);
+//		alert(obj.todo[0].note); // будет выведено "John"
+//		console.log("json: " + obj.todo[0].note);
+//	} );
+	switch (status) {
+		case "all": {
+			for (var i = 0; i < todoArray.length; i++) {
+				screen(todoArray[i].note, i);
+			}
+			break;
+		}
+		case "active": {
+			for (var i = 0; i < todoArray.length; i++) {
+				if (todoArray[i].activeStatus === true) {
+					screen(todoArray[i].note, i);
+				}
+			}
+			break;
+		}
+		case "complited": {
+			for (var i = 0; i < todoArray.length; i++) {
+				if (todoArray[i].activeStatus !== true) {
+					screen(todoArray[i].note, i);
+				}
+			}
+			break;
+		}
+		
 	}
-	
+	} );
+}
+
+
+var screenAll = function() {
+	status = "all";
+	screenNotes();
 }
 
 var screenActive = function() {
-	document.getElementById("list").innerHTML = "";
-	for (var i = 0; i < todoArray.length; i++) {
-		if (todoArray[i].activeStatus === true) {
-			screen(todoArray[i].note, i);
-		}
-	}
+	status = "active";
+	screenNotes();
 }
 
 var screenCompleted = function() {
-	document.getElementById("list").innerHTML = "";
-	for (var i = 0; i < todoArray.length; i++) {
-		if (todoArray[i].activeStatus !== true) {
-			screen(todoArray[i].note, i);
-		}
-	}
+	status = "complited";
+	screenNotes();
 }
 
