@@ -23,6 +23,7 @@ exports.changeStatus = function(req, res) {
 
 	console.log("PUT");
 	var id = req.body.id;
+	console.log("id: " + id);
 //	console.log("id: " + id);
 	todoArray[id].activeStatus = !todoArray[id].activeStatus;
 //	console.log(todoArray[id].activeStatus);
@@ -53,10 +54,8 @@ exports.get = function(req, res) {
 exports.remove = function(req, res) {
 
 	console.log("DELETE");
-	var id = req.body.id;	
-	delete todoArray[id];
-	_.each(todoArray, function(element) {
-		console.log(element.note)
-	});
+	var id = req.body.id;
+	console.log(todoArray[id].note);
+	todoArray.splice(id, 1);
 	res.end();
 }

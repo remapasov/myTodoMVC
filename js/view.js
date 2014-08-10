@@ -16,10 +16,11 @@ var screen = function(note, i) {
 		note + "<a href='#' id='ref" + i + "' class='remove'>X</a></li>";
 	list.appendChild(li);
 	
+	// remove
 	var ref = document.getElementById("ref" + i);
 	ref.onclick = function(index) {
 		return function() {
-//			todoArray.splice(index, 1);
+			todoArray.splice(index, 1);
 			var data = {
 					"id": index
 				}
@@ -33,6 +34,7 @@ var screen = function(note, i) {
 		}
 	}(i);
 	
+	// change status
 	var check = document.getElementById("ch" + i);
 	check.onclick = function(index) {
 		return function() {
