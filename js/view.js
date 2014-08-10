@@ -20,7 +20,6 @@ var screen = function(note, i) {
 	var ref = document.getElementById("ref" + i);
 	ref.onclick = function(index) {
 		return function() {
-			todoArray.splice(index, 1);
 			var data = {
 					"id": index
 				}
@@ -39,9 +38,7 @@ var screen = function(note, i) {
 	check.onclick = function(index) {
 		return function() {
 			todoArray[index].activeStatus = !todoArray[index].activeStatus;
-//			$.put('/changeStatus', {id: index});
 			
-//			console.log("ID: " + index);
 			var data = {
 				"id": index
 			}
@@ -66,47 +63,21 @@ var screen = function(note, i) {
 		ch.get(i).checked = "checked";
 	}
 		
-//	console.log("Ch: " + ch.get(0));
-//	ch.get(i).addEventListener("change", function(){
-//		todoArray[i].activeStatus = !todoArray[i].activeStatus;
-//		screenAll();
-//		});
-//	ch.get(0).checked = "checked";
-//	ch.get(i).on('change', function(){
-//		todoArray[i].activeStatus = !todoArray[i].activeStatus;
-//		screenAll();
-//		});
-//	ch.get(i).onclick = function(index){
-//		return function() {
-//			todoArray[index].activeStatus = !todoArray[index].activeStatus;
-//			screenAll();
-//		}
-//	}(i);
-
-//	var check = document.getElementById("ch" + i);
-//	check.onchange = function(index) {
-//		return function() {
-//			todoArray[index].activeStatus = !todoArray[index].activeStatus;
-//			screenAll();
-//		}
-//	}(i);
-	
-	
 }
 
 // all operations in callback 
 var screenNotes = function() {
 	document.getElementById("list").innerHTML = "";
 	$.get( "get", null, function(array) {
-//		todoArray = $.parseJSON(array).todo;
+		todoArray = $.parseJSON(array).todo;
+		
 //		console.log(jQuery.parseJSON(array).todo[0].note);
 //		todoArray = jQuery.parseJSON(array).todo;
-//		for (var i = 0; i < todoArray.length; i++) {
-//			console.log(todoArray[i].note);
-//		}
+		for (var i = 0; i < todoArray.length; i++) {
+			console.log(todoArray[i].note);
+		}
 //		alert(obj.todo[0].note); // будет выведено "John"
 //		console.log("json: " + obj.todo[0].note);
-//	} );
 	switch (status) {
 		case "all": {
 			for (var i = 0; i < todoArray.length; i++) {

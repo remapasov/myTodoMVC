@@ -57,5 +57,26 @@ exports.remove = function(req, res) {
 	var id = req.body.id;
 	console.log(todoArray[id].note);
 	todoArray.splice(id, 1);
+//	delete todoArray[id];
+	_.each(todoArray, function(element) {
+		console.log(element.note)
+	});
+	res.end();
+}
+
+exports.removeCompleted = function(req, res) {
+
+	console.log("DELETE COMPLETED");
+//	var id = req.body.id;
+	
+	var tempArray = [];
+	_.each(todoArray, function(element, index) {
+		if (element.activeStatus) {
+			tempArray.push(element);
+		}
+		
+	});
+
+	todoArray = tempArray;
 	res.end();
 }

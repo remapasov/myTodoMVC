@@ -32,24 +32,12 @@ var changeAllStatus = function() {
 
 var clearCompleted = function() {
 	var length = todoArray.length;
-	var tempArray = [];
-	_.each(todoArray, function(element, index) {
-		if (element.activeStatus) {
-			tempArray.push(element);
-		} else {
-			var data = {
-				"id": index
-			}
-			$.ajax({
-				  type: "DELETE",
-				  url: "/remove",
-				  data: data,
-				  async: false
-			});
-		}
+	
+	$.ajax({
+		  type: "DELETE",
+		  url: "/removeCompleted",
+		  async: false
 	});
-
-	todoArray = tempArray;
 	screenNotes();
 }
 
@@ -60,12 +48,7 @@ form.on('submit', function() {
 		$.post('/add', {note: todo.note}, function() {
 			screenNotes();
 		});
-		todoArray.push(todo);
 	}
-//	console.log(todo.note);
-//	$.ajax({type: 'DELETE', data: {a: 1}, url: '/remove'})
-
-//	screenNotes();
 	document.getElementById("input").value = "";
 	return false;
 });
